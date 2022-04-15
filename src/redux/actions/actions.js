@@ -1,4 +1,4 @@
-import { checkRecipeInLocalStorage } from "../../services/localStorage";
+import { checkRecipeInLocalStorage, getDataFromLocalStorage } from "../../services/localStorage";
 
 export const addRandomRecipes = (getRandomRecipes, numberOfUploadedRecipes) => (dispatch) => {
     dispatch({type: 'ADD_RANDOM_RECIPES_FETCHING'});
@@ -17,4 +17,6 @@ export const toggleFiterBtn = (recipe, filter) => (dispatch) => {
     checkRecipeInLocalStorage(recipe, 'isFavourite', filter);
     checkRecipeInLocalStorage(recipe, 'isBookmark', filter);
     dispatch({type: 'UPDATE_RANDOM_RECIPES', payload: {recipe, filter}});
+    dispatch({type: 'UPDATE_FAVOURITE_RECIPES', payload: getDataFromLocalStorage('isFavourite')});
+    dispatch({type: 'UPDATE_BOOKMARKS_RECIPES', payload: getDataFromLocalStorage('isBookmark')});
 }

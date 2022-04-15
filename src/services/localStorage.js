@@ -7,7 +7,7 @@ export const setDataToLocalStorage = (filter, data) => {
 }
 
 export const checkRecipeInLocalStorage = (recipe, filter, changeableFilter) => {
-    const recipes = getDataFromLocalStorage(filter) || [];
+    let recipes = getDataFromLocalStorage(filter) || [];
     for (let i = 0; i < recipes.length; i++) {
         if (recipes[i].id === recipe.id) {
             if (filter === changeableFilter) {
@@ -21,7 +21,7 @@ export const checkRecipeInLocalStorage = (recipe, filter, changeableFilter) => {
         }
     }
     if (filter === changeableFilter) {
-        recipes.push({...recipe, [changeableFilter]: !recipe[changeableFilter]});
+        recipes = [{...recipe, [changeableFilter]: !recipe[changeableFilter]}, ...recipes];
     }
     setDataToLocalStorage(filter, recipes);
 }
