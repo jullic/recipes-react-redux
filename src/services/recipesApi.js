@@ -5,8 +5,8 @@ export const getRandomRecipes = async (numberOfUploadedRecipes = 1) => {
     return await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${_api1}&number=${numberOfUploadedRecipes}`).then(res => res.json());
 }; 
 
-export const getRecipesByName = async (name, numberOfUploadedRecipes = 1) => {
-    return await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${_api1}&query=${name}&maxFat=25&number=${numberOfUploadedRecipes}`).then(res => res.json());
+export const getRecipesByName = async (name, numberOfUploadedRecipes = 1, offset = 0) => {
+    return await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${_api1}&query=${name}&maxFat=25&number=${numberOfUploadedRecipes}&offset=${offset}`).then(res => res.json());
 }; 
 
 

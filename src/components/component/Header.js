@@ -11,7 +11,10 @@ const Header = (props) => {
         dispatch(changeInputValue(e.target.value));
     };
     const onAddRecipesByName = () => {
-        dispatch(addRecipesByName(getRecipesByName, numberOfUploadedRecipes, search));        
+        if (search !== '') {
+            dispatch(addRecipesByName(getRecipesByName, numberOfUploadedRecipes, search));
+        }   
+        dispatch({type: 'NEW_SEARCH'});   
     }
 
     return (

@@ -2,6 +2,8 @@ import RecipesRecipe from "./RecipesRecipe";
 
 const Recipes = (props) => {
 
+    console.log(props.isSearch);
+    
     return (
         <main className="recipes">
             <div className="container">

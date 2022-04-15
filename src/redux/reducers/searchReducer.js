@@ -1,6 +1,7 @@
 const initialState = {
     recipes: [],
     search: '',
+    offset: 0,
     isSearch: false,
     loadingStatus: 'idle',
     loadingPage: 'idle',
@@ -15,12 +16,18 @@ const searchReducer = (state = initialState, action) => {
                 search: action.payload,
                 isSearch: action.payload === '' ? false : true
             }
+        case 'NEW_SEARCH': 
+            return {
+                ...state,
+                recipes: []
+            }
         case 'ADD_RECIPES_BY_NAME_FETCHING': 
         console.log('loading');
             return {
                 ...state,
                 loadingStatus: 'loading',
                 loadingPage: 'loading',
+                offset: state.offset + state.numberOfUploadedRecipes,
             }
         case 'ADD_RECIPES_BY_NAME_FETCHED': 
         console.log(action.payload);

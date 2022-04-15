@@ -28,9 +28,9 @@ export const changeInputValue = (value) => {
     }
 };
 
-export const addRecipesByName = (getRecipesByName, numberOfUploadedRecipes, name) => (dispatch) => {
+export const addRecipesByName = (getRecipesByName, numberOfUploadedRecipes, name, offset) => (dispatch) => {
     dispatch({type: 'ADD_RECIPES_BY_NAME_FETCHING'});
-    getRecipesByName(name, numberOfUploadedRecipes)
+    getRecipesByName(name, numberOfUploadedRecipes, offset)
         .then(result => dispatch({type: 'ADD_RECIPES_BY_NAME_FETCHED', payload: result.results}))
         .catch(err => dispatch({type: 'ADD_RECIPES_BY_NAME_FETCHING_ERROR'}))
 };
