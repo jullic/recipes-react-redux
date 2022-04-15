@@ -1,13 +1,14 @@
 import { Route, Routes } from "react-router";
-import Header from "./component/Header";
-import YourRecipesPage from './component/pages/YourRecipesPage';
-import BookmarksPage from './component/pages/BookmarksPage';
-import FavouriteRecipesPage from './component/pages/FavouriteRecipesPage';
-import RecipePage from "./component/pages/RecipePage";
-import Page404 from "./component/pages/Page404";
+import Header from "./components/component/Header";
+import YourRecipesPage from './components/pages/YourRecipesPage';
+import BookmarksPage from './components/pages/BookmarksPage';
+import FavouriteRecipesPage from './components/pages/FavouriteRecipesPage';
+import RecipePage from "./components/pages/RecipePage";
+import Page404 from "./components/pages/Page404";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import MainPage from "./component/pages/MainPage";
+import MainPage from "./components/pages/MainPage";
+import SearchPage from "./components/pages/SearchPage";
 
 
 function App() {
@@ -19,9 +20,10 @@ function App() {
   return (
     <div className="App">
           <div className="app">
-            <Header/>
+            <Header isSearch={false}/>
             <Routes>
               <Route path="/" element={<MainPage />}/>
+              <Route path="/search" element={<SearchPage />}/>
               <Route path="/your" element={<YourRecipesPage />} />
               <Route path="/bookmarks" element={<BookmarksPage />} />
               <Route path="/favourites" element={<FavouriteRecipesPage />} />

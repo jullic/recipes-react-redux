@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
 
     return (
         <header className="header">
@@ -9,12 +9,12 @@ const Header = () => {
                     <Link to='/' className="header__logo" style={{textDecoration: 'none'}}>Recipe</Link>
                     <div className="header__search">
                         <input type="text" className="header__input" />
-                        <button className="header__input-search-btn">
+                        <Link to={props.isSearch ? '/search' : '/'} className="header__input-search-btn">
                             <svg width="25" height="25" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.1111 24.2222C19.2476 24.2222 24.2222 19.2476 24.2222 13.1111C24.2222 6.97461 19.2476 2 13.1111 2C6.97461 2 2 6.97461 2 13.1111C2 19.2476 6.97461 24.2222 13.1111 24.2222Z" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                                 <path d="M27.0002 27L20.9585 20.9583" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
-                        </button>
+                        </Link>
                     </div>
                     <div className="header__menu" >
                         <div className="header__btns">

@@ -1,7 +1,7 @@
 import React from 'react'
-import RecipeHeader from './RecipeHeader';
-import RecipeMain from './RecipeMain';
-import RecipeDescr from './ResipeDescr';
+import RecipeHeader from './component/RecipeHeader';
+import RecipeMain from './component/RecipeMain';
+import RecipeDescr from './component/ResipeDescr';
 
 const Recipe = () => {
     return (

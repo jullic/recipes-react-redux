@@ -1,4 +1,5 @@
 const RecipesRecipe = (props) => {
+    const {recipe} = props;
     return (
         <div className="recipes__grid-item">
             <div className="recipes__grid-item-btns">
@@ -13,8 +14,8 @@ const RecipesRecipe = (props) => {
                     </svg>
                 </button>
             </div>
-            <img src='' alt='' className="recipes__grid-item-img" />
-            <h3 className="recipes__grid-item-title"></h3>
+            <img src={recipe.image} alt={recipe.title} className="recipes__grid-item-img" />
+            <h3 className="recipes__grid-item-title">{recipe.title.length > 30 ? recipe.title.slice(0, 30).trim() + '...' : recipe.title}</h3>
         </div>
     )
 }
