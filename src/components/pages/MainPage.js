@@ -7,20 +7,20 @@ import Recipes from "../component/Recipes";
 const MainPage = () => {
     const {recipes, isFirstLoadingMainPage, numberOfUploadedRecipes} = useSelector(state => state.main);
     const dispatch = useDispatch();
-    console.log(recipes);
-    
 
     useEffect(() => {
         if (isFirstLoadingMainPage) {
             dispatch(addRandomRecipes(getRandomRecipes, numberOfUploadedRecipes));
             dispatch(firstLoadingMainPage());
-            console.log(recipes);
         }
-        
     }, []);
 
+    const onAddRandomRecipes = () => {
+        dispatch(addRandomRecipes(getRandomRecipes, numberOfUploadedRecipes));
+    };
+
     return (
-        <Recipes title='Random recipes' loadMoreBtn={true} recipes={recipes}/>
+        <Recipes title='Random recipes' loadMoreBtn={true} recipes={recipes} addRandomRecipes={onAddRandomRecipes}/>
     )
 }
 
