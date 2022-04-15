@@ -12,6 +12,7 @@ import SearchPage from "./components/pages/SearchPage";
 
 
 function App() {
+  const {isSearch} = useSelector(state => state.search);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className="App">
           <div className="app">
-            <Header isSearch={false}/>
+            <Header isSearch={isSearch}/>
             <Routes>
               <Route path="/" element={<MainPage />}/>
               <Route path="/search" element={<SearchPage />}/>

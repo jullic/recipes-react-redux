@@ -11,7 +11,7 @@ const Recipes = (props) => {
                         {props.recipes && props.recipes.map(recipe => <RecipesRecipe key={recipe.id} recipe={recipe}/>)}
                         {(props.loadingStatus && props.loadingStatus === 'loading') ? new Array(props.numberOfUploadedRecipes).fill().map((item, i) => <RecipesRecipe recipes={null} key={i} isLoading={true}/> ) : null}
                     </div>
-                    {props.loadMoreBtn ? <button disabled={props.loadingStatus === 'loading'} onClick={props.addRandomRecipes} className="recipes__main-btn">Load more</button> : null}
+                    {props.loadMoreBtn ? <button disabled={props.loadingStatus === 'loading'} onClick={props.isSearch ? props.addRecipesByName : props.addRandomRecipes} className="recipes__main-btn">Load more</button> : null}
                 </div>
             </div>
         </main>

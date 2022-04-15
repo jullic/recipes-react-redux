@@ -1,6 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import { addRecipesByName, changeInputValue } from "../../redux/actions/actions";
+import { getRecipesByName } from "../../services/recipesApi";
 
 const Header = (props) => {
+    const {search, numberOfUploadedRecipes} = useSelector(state => state.search);
+    const dispatch = useDispatch();
+
+    const onChangeInputValue = (e) => {
+        dispatch(changeInputValue(e.target.value));
+    };
+    const onAddRecipesByName = () => {
+        dispatch(addRecipesByName(getRecipesByName, numberOfUploadedRecipes, search));        
+    }
 
     return (
         <header className="header">
@@ -8,8 +20,8 @@ const Header = (props) => {
                 <div className="header__wrapper">
                     <Link to='/' className="header__logo" style={{textDecoration: 'none'}}>Recipe</Link>
                     <div className="header__search">
-                        <input type="text" className="header__input" />
-                        <Link to={props.isSearch ? '/search' : '/'} className="header__input-search-btn">
+                        <input onChange={onChangeInputValue} type="text" className="header__input" />
+                        <Link onClick={onAddRecipesByName} to={props.isSearch ? '/search' : '/'} className="header__input-search-btn">
                             <svg width="25" height="25" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.1111 24.2222C19.2476 24.2222 24.2222 19.2476 24.2222 13.1111C24.2222 6.97461 19.2476 2 13.1111 2C6.97461 2 2 6.97461 2 13.1111C2 19.2476 6.97461 24.2222 13.1111 24.2222Z" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                                 <path d="M27.0002 27L20.9585 20.9583" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
