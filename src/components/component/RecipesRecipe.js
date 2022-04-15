@@ -1,9 +1,18 @@
 import { useDispatch } from "react-redux";
 import { toggleFiterBtn } from "../../redux/actions/actions";
-
+import spinner from './../../resources/spinner.gif'
 const RecipesRecipe = (props) => {
     const {recipe} = props;
     const dispatch = useDispatch();
+
+    if (props.isLoading) {
+        return (
+            <div className="recipes__grid-item">
+                <img className='spinner' src={spinner} alt="spinner" />
+            </div>
+        )
+    }
+
 
     const onToggleFiterBtn = (filter) => {
         dispatch(toggleFiterBtn(recipe, filter));

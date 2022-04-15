@@ -5,7 +5,7 @@ import getRandomRecipes from "../../services/recipesApi";
 import Recipes from "../component/Recipes";
 
 const MainPage = () => {
-    const {recipes, isFirstLoadingMainPage, numberOfUploadedRecipes} = useSelector(state => state.main);
+    const {recipes, isFirstLoadingMainPage, numberOfUploadedRecipes, loadingStatus} = useSelector(state => state.main);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const MainPage = () => {
     };
 
     return (
-        <Recipes title='Random recipes' loadMoreBtn={true} recipes={recipes} addRandomRecipes={onAddRandomRecipes}/>
+        <Recipes title='Random recipes' numberOfUploadedRecipes={numberOfUploadedRecipes} loadingStatus={loadingStatus} loadMoreBtn={true} recipes={recipes} addRandomRecipes={onAddRandomRecipes}/>
     )
 }
 
