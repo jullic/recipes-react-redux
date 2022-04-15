@@ -10,3 +10,7 @@ export const firstLoadingMainPage = () => {
         type: 'FIRST_LOADING_MAIN_PAGE'
     }
 };
+
+export const toggleFiterBtn = (recipe, filter) => (dispatch) => {
+    dispatch({type: 'UPDATE_RANDOM_RECIPES', payload: {recipe, filter}});
+}

@@ -29,6 +29,11 @@ const mainReducer = (state = initialState, action) => {
                 ...state,
                 loadingStatus: 'error'
             }
+        case 'UPDATE_RANDOM_RECIPES':
+            return {
+                ...state,
+                recipes: [...state.recipes.map(recipe => recipe.id === action.payload.recipe.id ? {...recipe, [action.payload.filter]: !recipe[action.payload.filter]} : recipe)]
+            }
         default:
             return state;
     }
