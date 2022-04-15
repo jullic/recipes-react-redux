@@ -20,6 +20,8 @@ export const checkRecipeInLocalStorage = (recipe, filter, changeableFilter) => {
             return;
         }
     }
-    recipes.push({...recipe, [changeableFilter]: !recipe[changeableFilter]});
+    if (filter === changeableFilter) {
+        recipes.push({...recipe, [changeableFilter]: !recipe[changeableFilter]});
+    }
     setDataToLocalStorage(filter, recipes);
 }
